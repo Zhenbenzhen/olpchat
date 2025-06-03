@@ -1,0 +1,4 @@
+[
+  { "id": "testuser", "psw": "123456" },
+  { "id": "admin", "psw": "adminpass" }
+]

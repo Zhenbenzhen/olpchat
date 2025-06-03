@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>财慧小助手</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style_pre.css" />
+</head>
+<body>
+  <!-- 聊天主界面 -->
+  <div class="chat-container" id="app-container">
+    <div class="messages" id="messages"></div>
+    <div id="loading" class="loading">加载中...</div>
+    <div class="input-container">
+      <input id="chat-input" type="text" placeholder="输入消息..." />
+      <button onclick="sendMessage()">发送</button>
+      <div class="dropdown">
+        <button onclick="toggleDropdown(event)">更多</button>
+        <div class="dropdown-content" id="dropdownMenu">
+          <div class="dropdown-item" onclick="toggleTheme()">切换主题</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const isDark = localStorage.getItem("darkMode") === "true";
+      if (isDark) document.body.classList.add("dark-mode");
+
+      document.getElementById('chat-input').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter' && !event.shiftKey) {
+          event.preventDefault();
+          sendMessage();
+        }
+      });
+    });
+
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+    }
+
+    function toggleDropdown(event) {
+      event.preventDefault();
+      document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+      if (!event.target.matches(".dropdown button")) {
+        const dropdowns = document.getElementsByClassName("dropdown-content");
+        for (const dropdown of dropdowns) {
+          dropdown.classList.remove("show");
+        }
+      }
+    };
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
