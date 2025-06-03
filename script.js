@@ -93,8 +93,8 @@ function sendMessage() {
         loadingElement.style.display = 'block';
     }
 
-    const apiKey = 'sk-8d562daac03f40f1bef7315253125a59';
-    const appId = 'bef05e8a910449fe9419cb298d5328d9';
+    const apiKey = 'sk-b778fc80ae744f0286eb82c59c0c6862';
+    const appId = 'd540d9436ce942d6a61a273fb2950333';
     const endpoint = `https://dashscope.aliyuncs.com/api/v1/apps/${appId}/completion`;
 
     // 修改请求体结构以匹配官方示例
